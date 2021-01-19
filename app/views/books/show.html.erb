@@ -1,0 +1,9 @@
+<h1>Books</h1>
+  <p><%= image_tag('sample-author1.jpg') %></p>
+  <p>title</p>
+  <span>
+    <%= link_to @book.title, book_path(@book.id) %>
+    </span>
+  <p>opinion</p>
+  <p><%= @book.body %></p>
+
