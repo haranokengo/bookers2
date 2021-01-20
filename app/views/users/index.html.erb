@@ -1,11 +1,15 @@
 <h1>Users</h1>
+<table>
+  <tr>
+    <th>image</th>
+    <th>name</th>
+    <th></th>
+  </tr>
 <% @user.each do |user| %>
-  <p>image</p>
-  <span>
-    <%= user.profile_image_id %>
-  </span>
-  <p>name</p>
-  <span>
-    <%= user.name %>
-  </span>
+  <tr>
+    <td></td>
+    <td><%= user.name %></td>
+    <td><%= link_to 'show', user_path(user.id) %></td>
+  </tr>
+</table>
 <% end %>
