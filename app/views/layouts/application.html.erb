@@ -11,7 +11,7 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm">
+    <header class="bg-dark text-white shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +20,11 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
+              
+                <ji class="nav-item">
+                  <a href="https://7260f48adb644392b5343356df8dfe4c.vfs.cloud9.us-east-1.amazonaws.com/">Bookers</a>
+                </ji>
+                
     　           <li class="nav-item">
     　             <%= link_to "Home",user_path(current_user.id) %>
                 </li>
