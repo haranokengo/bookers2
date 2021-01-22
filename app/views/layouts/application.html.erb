@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title><%= link_to "Bookers2", root_path %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if user_signed_in? %>
-    　<li>
-    　  <%= link_to "Home",user_path(current_user.id) %>
-    　</li>
-    　
-    　<li>
-    　  
-    　 <%= link_to "Users",users_path %>
-    　</li>
-    　
-    　<li>
-    　 <%= link_to "Books",books_path %>
-    　</li>
-    　
-      <li>
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-      </li>
-      
-    <% else %>
-    
-      <li>
-         home
-      </li>
-      
-      <li>
-        About
-      </li>
-      
-      <li>
-        <%= link_to "signup", new_user_registration_path %>
-      </li>
-      
-      <li>
-        <%= link_to "login", new_user_session_path %>
-      </li>
-      
-    <% end %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+    　           <li class="nav-item">
+    　             <%= link_to "Home",user_path(current_user.id) %>
+                </li>
+
+    　           <li class="nav-item">
+    　             <%= link_to "Users",users_path %>
+    　           </li>
+
+    　           <li class="navitem" >
+    　             <%= link_to "Books",books_path %>
+    　           </li>
+
+                <li class="nav-item">
+                  <%= link_to "logout", destroy_user_session_path, method: :delete %>
+                </li>
+
+                <% else %>
+
+                <li class="navitem">
+                  <%= link_to "Home",root_path %>
+                </li>
+                <li class="navitem">
+                  <%= link_to "About",home_about_path %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to "signup", new_user_registration_path %>
+                </li>
+
+                <li class="nav-item">
+                  <%= link_to "login", new_user_session_path %>
+                </li>
+
+                <% end %>
+              </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mb-auto">
     <%= yield %>
+    </main>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
   </body>
 </html>
