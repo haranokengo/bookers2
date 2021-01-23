@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/4401dbf3bc.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -18,52 +19,62 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <% if user_signed_in? %>
-                <div class="collapse navbar-collapse">
-                <li class="nav-item">
-                  <a href="https://7260f48adb644392b5343356df8dfe4c.vfs.cloud9.us-east-1.amazonaws.com/">Bookers</a>
-                </li>
-
-    　           <li class="nav-item">
-    　             <%= link_to "Home",user_path(current_user.id) %>
-                </li>
-
-    　           <li class="nav-item">
-    　             <%= link_to "Users",users_path %>
+            <%= link_to "Bookers", root_path %>
+            <div class="collapse navbar-collapse justify-content-end">
+              <ul class="navbar-nav">
+                <% if user_signed_in? %>
+  　             <li class="nav-item">
+    　             <%= link_to "Home", user_path(current_user.id),class:"fas fa-home" %>
+    　             </li>
+    　             <li class="nav-item">
+    　             <%= link_to"Users", users_path,class:"fas fa-users" %>
     　           </li>
 
-    　           <li class="navitem" >
-    　             <%= link_to "Books",books_path %>
-    　           </li>
+  　             <li class="nav-item">
+    　             <%= link_to "Books", books_path,class:"fas fa-book-open" %>
+    　             </li>
 
                 <li class="nav-item">
-                  <%= link_to "logout", destroy_user_session_path, method: :delete %>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <i class="fas fa-sign-out-alt"></i>logout
+                  <% end %>
                 </li>
 
                 <% else %>
+                <li class="navitem">
+                  <%= link_to root_path  do %>
+                   <i class="fas fa-home"></i>Home
+                  <% end %>
+                </li>
 
                 <li class="navitem">
-                  <%= link_to "Home",root_path %>
-                </li>
-                <li class="navitem">
-                  <%= link_to "About",home_about_path %>
+                  <%= link_to home_about_path do %>
+                    <i class="fas fa-link"></i>About
+                  <% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to "signup", new_user_registration_path %>
+                  <%= link_to new_user_registration_path do %>
+                    <i class="fas fa-user-plus"></i>sign up
+                  <% end %>
                 </li>
 
                 <li class="nav-item">
-                  <%= link_to "login", new_user_session_path %>
+                  <%= link_to new_user_session_path do %>
+                    <i class="fas fa-sign-in-alt"></i>login
+                  <% end %>
                 </li>
 
                 <% end %>
-            </ul>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>
     </header>
+    <div class="flash">
+      <p><%= flash[:notice] %></p>
+    </div>
     <%= yield %>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
