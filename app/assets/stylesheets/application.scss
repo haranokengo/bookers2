@@ -16,3 +16,39 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+
+ .list>li {
+  padding-right: 20px;
+ }
+
+.list>li:last-child {
+ padding-right: 0;
+ margin-right: 0;
+}
+
+.list-head {
+ margin-right: 0;
+}
+
+header>nav {
+ padding: 0;
+}
+
+.flash {
+ color: green;
+}
+
+.error_explanation {
+ color: red;
+}
+
+.main-log {
+ margin-left: 0;
+}
+
+.footer-text {
+ width: 100%;
+ background-color: gray;
+ color: #fff;
+ text-align: center;
+}
