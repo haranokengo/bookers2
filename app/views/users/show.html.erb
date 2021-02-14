@@ -16,6 +16,9 @@
           <th><%= @user.introduction %></th>
           </tr>
       </table>
+      <% if current_user != @user %>
+        <%= link_to 'チャットする', chat_path(@user.id) %>
+      <% end %>
           <%= link_to  edit_user_path(@user) do %>
             <button type="button" class="btn-outline-secondary btn-block" >
               <i class="fas fa-user-cog"></i>
